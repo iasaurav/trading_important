@@ -1,4 +1,4 @@
-# Step 1: Download the Option_Expiry list
+# Step 1: Download the Current_Option_Expiry list
 import pandas as pd
 
 # URL of the API endpoint
