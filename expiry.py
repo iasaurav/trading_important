@@ -1,18 +1,4 @@
-# Step 1: Download the Nifty 500 list
-import requests
-url = "https://nsearchives.nseindia.com/content/indices/ind_nifty500list.csv"
-headers = {'User-Agent': 'Mozilla/5.0'}
-
-# Download and save CSV
-response = requests.get(url, headers=headers)
-if response.status_code == 200:
-    with open("nifty500.csv", "wb") as file:
-        file.write(response.content)
-else:
-    print("Download failed.")
-
-
-# Step 2: Download the Option_Expiry list
+# Step 1: Download the Option_Expiry list
 import pandas as pd
 
 # URL of the API endpoint
@@ -25,9 +11,7 @@ data['expiry'] = pd.to_datetime(data['expiry']).dt.strftime('%d-%m-%Y')
 # Define filter conditions
 filters = [
     {"filter_names_list": ["NIFTY", "BANKNIFTY", "FINNIFTY"], "segment": "NFO-OPT"},
-    {"filter_names_list": ["SENSEX", "BANKEX"], "segment": "BFO-OPT"},
-    {"filter_names_list": ["CRUDEOIL", "GOLD", "SILVER"], "segment": "MCX-OPT"},
-
+    {"filter_names_list": ["SENSEX", "BANKEX"], "segment": "BFO-OPT"}  
 ]
 
 # Initialize an empty DataFrame to store the results
