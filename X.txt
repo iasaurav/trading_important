@@ -1,0 +1,20 @@
+import pandas as pd
+
+# Replace the file_path with the CSV URL
+file_path = 'https://api.kite.trade/instruments'
+
+# Read the CSV file
+df = pd.read_csv(file_path)
+
+# Filter conditions for options and futures
+option_segments = ['NFO-OPT', 'BFO-OPT', 'MCX-OPT']
+future_segments = ['NFO-FUT', 'BFO-FUT', 'MCX-FUT']
+names = ['NIFTY', 'BANKNIFTY', 'FINNIFTY', 'SENSEX', 'BANKEX', 'CRUDEOIL']
+
+# Apply filters
+option_df = df[df['segment'].isin(option_segments) & df['name'].isin(names)]
+future_df = df[df['segment'].isin(future_segments) & df['name'].isin(names)]
+
+# Print filtered DataFrames
+print(option_df)
+print(future_df)

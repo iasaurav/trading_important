@@ -1,0 +1,32 @@
+import pandas as pd
+
+# Replace the file_path with the CSV URL
+file_path = 'https://api.kite.trade/instruments'
+
+# Read the CSV file
+df = pd.read_csv(file_path)
+
+# Filter conditions for options and futures
+segments = ['NFO-OPT', 'BFO-OPT', 'MCX-OPT','NFO-FUT', 'BFO-FUT', 'MCX-FUT']
+option_segments = segments[:3]
+future_segments = segments[3:6]
+print(future_segments)
+equity_segments = ['NSE']
+names = ['NIFTY', 'BANKNIFTY', 'FINNIFTY', 'SENSEX', 'BANKEX', 'CRUDEOIL']
+
+# Apply filters
+option_df = df[df['segment'].isin(option_segments) & df['name'].isin(names)]
+future_df = df[df['segment'].isin(future_segments) & df['name'].isin(names)]
+equity_df = df[df['segment'].isin(equity_segments)]
+# Combine the filtered dataframes into one
+df = pd.concat([future_df,option_df,equity_df], ignore_index=True)
+
+# Print the combined dataframe
+print(df)
+
+
+# Save the combined dataframe to an Excel file
+file_path = 'combined_data.xlsx'
+df.to_excel(file_path, index=False)
+
+

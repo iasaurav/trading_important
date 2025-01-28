@@ -1,0 +1,44 @@
+#WRITING CODE,FOR ZERODHA,UPSTOX,DHAN
+
+
+#DHAN
+if exchange == "NFO-OPT":
+    result = dhan.NSE_FNO
+elif exchange == "BFO-OPT":
+    result = dhan.BSE_FNO
+elif exchange == "MCX-OPT":
+    result = dhan.MCX
+elif exchange == "NSE":
+    result = dhan.NSE
+
+
+
+
+
+
+
+#UPSTOX
+if exchange == "NFO-OPT":
+    result = NSE_FO
+elif exchange == "BFO-OPT":
+    result = BSE_FO
+elif exchange == "MCX-OPT":
+    result = MCX_FO
+
+
+
+
+
+#DHAN
+if exchange == "NFO-OPT":
+    result = NFO-OPT
+elif exchange == "BFO-OPT":
+    result = BFO-OPT
+elif exchange == "MCX-OPT":
+    result = MCX-OPT
+elif exchange == "NSE":
+    result = NSE
+
+
+
+
